@@ -26,7 +26,7 @@ std::string build_json(const json_build_t &f) {
   const size_t free_heap = heap_caps_get_largest_free_block(MALLOC_CAP_8BIT);
 #endif
 
-  const size_t request_size = std::min(free_heap, (size_t) 512);
+  const size_t request_size = free_heap - 2048;
 
   DynamicJsonDocument json_document(request_size);
   if (json_document.capacity() == 0) {
